@@ -7,7 +7,13 @@ A module for generating and verifying OTPs.
 Install the package using Composer.
 
 ```bash
-composer require elysiumrealms/otp
+composer require elysiumrealms/laravel-otp
+```
+
+Publish the assets.
+
+```bash
+php artisan vendor:publish --tag=otp-assets
 ```
 
 Run the migrations.

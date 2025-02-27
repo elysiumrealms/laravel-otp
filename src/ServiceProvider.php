@@ -74,6 +74,11 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             __DIR__ . '/../resources/lang'
             => resource_path('lang/vendor/otp'),
         ], 'otp-lang');
+
+        $this->publishes([
+            __DIR__ . '/../resources/assets/images'
+            => public_path('vendor/laravel-otp/images'),
+        ], 'otp-assets');
     }
 
     /**

@@ -71,6 +71,7 @@ class OtpNotification extends Notification
                 'otp' => $notifiable->token,
                 'logo' => empty($logo = config('otp.mail.logo'))
                     ? null : asset($logo),
+                'banner' => asset('vendor/laravel-otp/images/banner.png'),
             ]);
     }
 
