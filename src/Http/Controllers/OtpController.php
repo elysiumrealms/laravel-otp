@@ -40,9 +40,7 @@ class OtpController
 
         $response = $this->service->generate(
             $request->input('identifier'),
-            config('otp.type'),
-            config('otp.length'),
-            config('otp.validity')
+            $via
         );
 
         if ($response->status)

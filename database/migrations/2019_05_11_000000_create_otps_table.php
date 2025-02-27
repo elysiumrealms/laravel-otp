@@ -19,6 +19,7 @@ class CreateOtpsTable extends Migration
                 $table->increments('id')->index();
                 $table->string('identifier')->index();
                 $table->string('token');
+                $table->string('via');
                 $table->integer('validity');
                 $table->boolean('valid')->default(true);
                 $table->boolean('status')->default(false);

@@ -26,6 +26,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'otp');
+
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'otp');
@@ -86,6 +88,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
         $this->commands([
             Console\Commands\CleanOtps::class,
+            Console\Commands\ValidateOtp::class,
         ]);
     }
 

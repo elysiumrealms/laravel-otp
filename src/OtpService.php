@@ -37,35 +37,32 @@ class OtpService
      * @param string $type
      * @param int $length
      * @param int $validity
-     * @return mixed
+     * @return object
      * @throws Exception
      */
-    public function generate(
-        string $identifier,
-        string $type,
-        int $length = 4,
-        int $validity = 10
-    ): object {
+    public function generate(string $identifier, string $via): object
+    {
         /** @var \Elysiumrealms\Otp\Models\Otp */
         $this->modelClass::where('identifier', $identifier)
             ->where('valid', true)->delete();
 
-        switch ($type) {
+        switch ($type = config('otp.type')) {
             case "numeric":
-                $token = $this->generateNumericToken($length);
+                $token = $this->generateNumericToken(config('otp.length'));
                 break;
             case "alpha_numeric":
-                $token = $this->generateAlphanumericToken($length);
+                $token = $this->generateAlphanumericToken(config('otp.length'));
                 break;
             default:
                 throw new Exception("{$type} is not a supported type");
         }
 
         $this->modelClass::create([
-            'identifier' => $identifier,
+            'via' => $via,
             'token' => $token,
-            'validity' => $validity
-        ]);
+            'identifier' => $identifier,
+            'validity' => config('otp.validity')
+        ])->notify(new Notifications\OtpNotification());
 
         return (object)[
             'status' => true,
