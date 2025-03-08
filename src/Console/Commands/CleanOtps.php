@@ -38,7 +38,7 @@ class CleanOtps extends Command
     public function handle()
     {
         /** @var \Elysiumrealms\Otp\Models\Otp */
-        $class = config('otp.model');
+        $class = config('otp.database.model');
 
         try {
             $otps = $class::where('valid', 0)

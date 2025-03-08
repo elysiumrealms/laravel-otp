@@ -5,7 +5,7 @@
     "license": "MIT",
     "keywords": ["laravel", "otp", "one-time-password", "authentication"],
     "homepage": "https://github.com/elysiumrealms/laravel-otp",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "authors": [
         {
             "name": "deflinhec",
